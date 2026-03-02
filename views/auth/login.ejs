@@ -1,0 +1,21 @@
+<%- include("../partials/header", { title }) %>
+
+<section class="card narrow">
+  <h1><%= title %></h1>
+  <% if (error) { %>
+    <p class="alert"><%= error %></p>
+  <% } %>
+  <form method="post" action="<%= action %>">
+    <label>
+      Email
+      <input type="email" name="email" required />
+    </label>
+    <label>
+      Password
+      <input type="password" name="password" required />
+    </label>
+    <button type="submit" class="btn">Login</button>
+  </form>
+</section>
+
+<%- include("../partials/footer") %>

@@ -1,0 +1,20 @@
+<%- include("../partials/header", { title: product.name }) %>
+
+<section class="product-detail">
+  <img src="<%= product.image_url || 'https://placehold.co/420x300?text=Product' %>" alt="<%= product.name %>" />
+  <div class="product-info">
+    <h1><%= product.name %></h1>
+    <p><%= product.description %></p>
+    <p class="price">$<%= product.price.toFixed(2) %></p>
+    <form method="post" action="/cart/add">
+      <input type="hidden" name="product_id" value="<%= product.id %>" />
+      <label>
+        Quantity
+        <input type="number" name="quantity" min="1" value="1" />
+      </label>
+      <button class="btn" type="submit">Add to cart</button>
+    </form>
+  </div>
+</section>
+
+<%- include("../partials/footer") %>

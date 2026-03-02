@@ -1,0 +1,30 @@
+<%- include("../partials/header", { title }) %>
+
+<section class="card">
+  <h1><%= title %></h1>
+  <form method="post" action="<%= action %>">
+    <label>
+      Product Name
+      <input type="text" name="name" value="<%= product ? product.name : '' %>" required />
+    </label>
+    <label>
+      Description
+      <textarea name="description" rows="4" required><%= product ? product.description : '' %></textarea>
+    </label>
+    <label>
+      Price
+      <input type="number" step="0.01" min="0" name="price" value="<%= product ? product.price : '' %>" required />
+    </label>
+    <label>
+      Image URL
+      <input type="text" name="image_url" value="<%= product ? product.image_url : '' %>" />
+    </label>
+    <label>
+      Stock
+      <input type="number" min="0" name="stock" value="<%= product ? product.stock : 0 %>" required />
+    </label>
+    <button type="submit" class="btn">Save Product</button>
+  </form>
+</section>
+
+<%- include("../partials/footer") %>

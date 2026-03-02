@@ -1,0 +1,31 @@
+<%- include("../partials/header", { title: "Shop" }) %>
+
+<section class="hero">
+  <div>
+    <h1>Amberstudent Essentials Store</h1>
+    <p>Everything you need to settle into your new city, curated for students.</p>
+  </div>
+</section>
+
+<section class="grid">
+  <% products.forEach((product) => { %>
+    <article class="card product-card">
+      <img src="<%= product.image_url || 'https://placehold.co/320x240?text=Product' %>" alt="<%= product.name %>" />
+      <div class="card-body">
+        <h2><%= product.name %></h2>
+        <p><%= product.description %></p>
+        <div class="card-actions">
+          <span class="price">$<%= product.price.toFixed(2) %></span>
+          <form method="post" action="/cart/add">
+            <input type="hidden" name="product_id" value="<%= product.id %>" />
+            <input type="hidden" name="quantity" value="1" />
+            <button class="btn" type="submit">Add to cart</button>
+          </form>
+        </div>
+        <a class="link" href="/products/<%= product.id %>">View details</a>
+      </div>
+    </article>
+  <% }) %>
+</section>
+
+<%- include("../partials/footer") %>

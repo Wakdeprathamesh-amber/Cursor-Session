@@ -1,0 +1,25 @@
+<%- include("../partials/header", { title: "Create Account" }) %>
+
+<section class="card narrow">
+  <h1>Create Account</h1>
+  <% if (error) { %>
+    <p class="alert"><%= error %></p>
+  <% } %>
+  <form method="post" action="/register">
+    <label>
+      Full Name
+      <input type="text" name="name" required />
+    </label>
+    <label>
+      Email
+      <input type="email" name="email" required />
+    </label>
+    <label>
+      Password
+      <input type="password" name="password" required />
+    </label>
+    <button type="submit" class="btn">Register</button>
+  </form>
+</section>
+
+<%- include("../partials/footer") %>
